@@ -1,0 +1,366 @@
+@use "../abstracts" as *;
+
+/* -------------------------------------------------- */
+/* ---------- Page des résultats ---------- */
+/* -------------------------------------------------- */
+
+.filter {
+	&-wrapper {
+		position: relative;
+    background-color: gray;
+
+		.slider-container {
+			text-align: center;
+			width: 100%;
+      margin-top: 1.5rem;
+		}
+
+		input[type="range"] {
+			appearance: none;
+			width: 100%;
+			height: 6px;
+			background: #ccc;
+			border-radius: 5px;
+			outline: none;
+		}
+
+		/* Style du curseur pour Webkit (Chrome, Safari) */
+		input[type="range"]::-webkit-slider-thumb {
+			-webkit-appearance: none;
+			width: 20px;
+			height: 20px;
+			border-radius: 50%;
+			background: $green;
+			cursor: pointer;
+		}
+
+		/* Style du curseur pour Firefox */
+		input[type="range"]::-moz-range-thumb {
+			width: 20px;
+			height: 20px;
+			border-radius: 50%;
+			background: $green;
+			cursor: pointer;
+		}
+
+		/* Étiquettes des valeurs */
+		.labels {
+			display: flex;
+			width: 100%;
+			justify-content: space-between;
+			margin-top: 10px;
+			font-size: 14px;
+			color: #666;
+		}
+
+		/* Toggle */
+
+		.toggle {
+			.toggle-control {
+				transition: all 300ms ease-in-out;
+				width: 5rem;
+				height: 2.5rem;
+				display: block;
+				border: 2px solid $white;
+				border-radius: 3rem;
+				background-color: rgba(black, 0.06);
+				position: relative;
+
+				&:after {
+					transition: all 300ms ease-in-out;
+					content: "";
+					width: 2.5rem;
+					height: 2.5rem;
+					display: block;
+					background-color: #fff;
+					border-radius: 50%;
+					box-shadow: 0 1px 2px rgba(black, 0.4), 0 3px 2px rgba(black, 0.4);
+					position: absolute;
+					top: -10%;
+					left: -10%;
+				}
+			}
+
+			input {
+				display: none;
+
+				&:checked + .toggle-control {
+					border-color: $green;
+					background-color: $green;
+
+					&:after {
+						left: 2.5rem;
+					}
+				}
+			}
+		}
+	}
+
+	&-title {
+		display: flex;
+		justify-content: space-between;
+		padding: 2rem;
+		align-items: center;
+
+		> p {
+			color: $white;
+		}
+
+		> i {
+			font-size: 3.3rem;
+			color: $white;
+		}
+	}
+
+	&-list {
+		clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+		transition: linear 200ms;
+		visibility: hidden;
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		padding: 2rem;
+		gap: 4rem;
+		position: absolute;
+		top: 100%;
+		left: 0;
+    background-color: gray;
+
+		&.open {
+			z-index: 6;
+			clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+			transition: linear 500ms;
+			visibility: visible;
+		}
+
+		&-item {
+			.contenu {
+				display: none; // Par défaut, caché
+			}
+
+			&.open {
+				.contenu {
+					display: flex;
+					flex-direction: column;
+					gap: 1rem;
+					align-items: start;
+					width: 100%;
+				}
+			}
+
+			&-group {
+				display: flex;
+				justify-content: space-between;
+				flex-direction: row;
+				gap: 1rem;
+				align-items: start;
+				width: 100%;
+
+				> p {
+					color: $white;
+				}
+
+				> i {
+					font-size: 2rem;
+					color: $white;
+				}
+			}
+
+			&-list {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        justify-content: start;
+        align-items: start;
+        margin-top: 1rem;
+
+				&-item {
+					width: 100%;
+					font-size: 2rem;
+					display: flex;
+					flex-direction: row;
+					align-items: center;
+					gap: 1rem;
+					justify-content: space-between;
+					background-color: $dark-gray;
+					border-radius: 10px;
+					padding: 1rem;
+
+					> p {
+						font-size: 1.5rem;
+						color: $white;
+					}
+				}
+			}
+
+      .search-wrapper {
+        padding: 0;
+        margin-top: 1rem;
+
+        &-form {
+          flex-direction: row;
+
+          &-input {
+            font-size: 1.5rem;
+            padding: 1rem;
+          }
+        }
+      }
+
+      &-region {
+        &-select {
+          width: 100%;
+          margin-top: 1rem;
+          padding: 1rem;
+          font-size: 1.5rem;
+          border-radius: 0.5rem;
+          border: 2px solid $dark-gray;
+          background-color: $white;
+
+          > option {
+            font-size: 1.5rem;
+          }
+        }
+      }
+		}
+	}
+
+	&-button {
+		width: 100%;
+	}
+}
+
+.search-wrapper {
+	padding-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  gap: 1.5rem;
+  margin-top: 2rem;
+
+	&-form {
+		width: 100%;
+		display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    gap: 1rem;
+
+    > label {
+      font-size: 1.6rem;
+      line-height: 1.5;
+    }
+
+    &-container {
+      display: flex;
+      width: 100%;
+      gap: 1rem;
+    }
+
+		&-input {
+			all: unset;
+			box-sizing: border-box;
+			border-radius: 0.5rem;
+			border: 2px solid $dark-gray;
+			padding: 1.5rem;
+			font-size: 1.6rem;
+      width: 100%;
+			max-width: 55rem;
+			background-color: $white;
+
+			&::placeholder {
+				font-size: 1.6rem;
+			}
+		}
+
+    &-btn {
+      > i {
+        font-size: 2rem;
+      }
+    }
+	}
+}
+
+.result-wrapper {
+	> ul {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 2rem;
+		margin: 3rem auto;
+	}
+}
+
+@include responsive("medium") {
+	.results-main {
+		display: grid;
+		grid-template-columns: 1fr 3fr;
+		grid-template-rows: auto 1fr;
+    column-gap: 4rem;
+
+		.recherche {
+			grid-area: 1/2/2/3;
+		}
+
+		.result-wrapper {
+			grid-area: 2/2/3/3;
+
+      > ul {
+        grid-template-columns: repeat(2, 1fr);
+      }
+		}
+
+		.filter {
+			&-wrapper {
+				grid-area: 1/1/3/2;
+        height: fit-content;
+				position: sticky;
+				top: 93px;
+				left: 0;
+			}
+
+			&-title {
+        padding-bottom: 0;
+
+				> p {
+					color: $white;
+				}
+			}
+
+			&-list {
+				position: static;
+        z-index: 6;
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+        transition: linear 500ms;
+        visibility: visible;
+
+				&-item {
+					.contenu {
+						display: flex;
+						flex-direction: column;
+						gap: 1rem;
+						align-items: start;
+						width: 100%;
+					}
+
+					&-group {
+						.filter-list-i {
+							display: none;
+						}
+					}
+
+					&-list {
+            margin-top: 1rem;
+
+						&-item {
+							display: flex;
+              flex-direction: row;
+              align-items: center;
+              justify-content: space-between;
+						}
+					}
+				}
+			}
+		}
+	}
+}

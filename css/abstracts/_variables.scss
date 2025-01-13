@@ -1,0 +1,69 @@
+/* -------------------------------------------------- */
+/* ---------- Typography ---------- */
+
+$font-family-regular: 'Manrope-regular', sans-serif;
+$font-family-title: 'Cabin', sans-serif;
+$fmedium: 600;
+$fsemibold: 700;
+$fbold: 800;
+
+/* ----- Import ----- */
+@font-face {
+    font-family: 'Manrope-regular';
+    font-style: normal;
+    font-weight: 400;
+    src: url(../../fonts/Manrope-Regular.ttf);
+}
+
+@font-face {
+    font-family: 'Manrope-medium';
+    font-style: normal;
+    font-weight: 600;
+    src: url(../../fonts/Manrope-Medium.ttf);
+}
+
+
+@font-face {
+    font-family: 'Manrope-semibold';
+    font-style: normal;
+    font-weight: 700;
+    src: url(../../fonts/Manrope-SemiBold.ttf);
+}
+
+@font-face {
+    font-family: 'Manrope-bold';
+    font-style: normal;
+    font-weight: 800;
+    src: url(../../fonts/Manrope-Bold.ttf);
+}
+
+@font-face {
+    font-family: 'Cabin';
+    font-style: normal;
+    font-weight: 700;
+    src: url(../../fonts/Cabin-SemiBold.ttf);
+}
+
+/* -------------------------------------------------- */
+/* ---------- Couleurs ---------- */
+
+$green :      #1F5C42;
+$light-green : #4c956c;
+$other-green : #17b873;
+$dark-gray :  #3F433D;
+$light-gray :  #bec5be;
+$white :      #F2F2F2;
+
+$danger :    #dc3535;
+$warning :   #ffc107;
+$success :   #28a745;
+
+/* -------------------------------------------------- */
+/* ---------- Responsive variable ---------- */
+
+$breakpoints: (
+    "small": 576px,
+    "medium": 768px,
+    "large": 992px,
+    "extra-large": 1200px,
+);

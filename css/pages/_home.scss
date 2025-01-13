@@ -1,0 +1,100 @@
+@use "../abstracts" as *;
+
+/* -------------------------------------------------- */
+/* ---------- Page d'accueil du site ---------- */
+/* -------------------------------------------------- */
+.home {
+	&-main {
+		display: grid;
+		grid-template-rows: repeat( 2, 1fr );
+	}
+
+	&-content {
+		&-search,
+		&-search-form {
+			@include flex-row(1.5rem);
+			flex-direction: column;
+		}
+	}
+
+	&-content {
+		grid-area: 1 / 1 / 2 / 2;
+		@include flex-row(2.5rem);
+		flex-direction: column;
+		padding: 3rem 0;
+
+		&-search {
+			width: 100%;
+
+			&-form {
+				width: 100%;
+
+				> label {
+					font-size: 1.6rem;
+					line-height: 1.5;
+				}
+
+				> input {
+					all: unset;
+					box-sizing: border-box;
+					border-radius: 0.5rem;
+					border: 2px solid $dark-gray;
+					padding: 1.5rem;
+					font-size: 1.6rem;
+					width: 100%;
+
+					&::placeholder {
+						font-size: 1.6rem;
+					}
+				}
+			}
+		}
+	}
+
+	&-image {
+		grid-area: 2 / 1 / 3 / 2;
+		width: 100%;
+		height: 100%;
+		position: relative;
+
+		> img {
+			min-width: 100%;
+			width: 100vw;
+			max-width: none;
+			min-height: 100%;
+			object-fit: cover;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+		}
+	}
+}
+
+@include responsive ("medium") {
+  .home {
+    &-main {
+      grid-template-rows: 1fr;
+      grid-template-columns: 1fr;
+      justify-content: start;
+      align-items: center;
+    }
+
+    &-content {
+      background-color: $white;
+      padding: 3rem;
+      max-width: 60rem;
+    }
+
+    &-image {
+			position: initial;
+      grid-area: 1 / 1 / 2 / 2;
+      z-index: -1;
+			overflow: hidden;
+
+			> img {
+				width: 100%;
+			}
+    }
+  }
+}

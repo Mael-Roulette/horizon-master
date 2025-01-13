@@ -1,0 +1,63 @@
+@use "../abstracts" as *;
+
+/* -------------------------------------------------- */
+/* ---------- Style des cards ---------- */
+/* -------------------------------------------------- */
+
+.card {
+	display: flex;
+	justify-content: space-between;
+	align-items: start;
+	gap: 3rem;
+	padding: 2rem;
+	background-color: $light-green;
+	width: 100%;
+	height: 100%;
+	border-radius: 1rem;
+
+	&-content {
+		@include flex-col(0.5rem);
+
+		> * {
+			color: $white;
+		}
+
+		&-etab {
+			font-weight: $fsemibold;
+		}
+	}
+
+	&-favorite-btn {
+		all: unset;
+		box-sizing: border-box;
+		width: fit-content;
+		height: 4rem;
+		z-index: 5;
+		transition: all 0.3s ease-in-out;
+
+		> svg {
+			width: 3rem;
+			height: 3rem;
+
+			> path {
+				transition: all 0.2s ease-in-out;
+
+        &.activ {
+          fill: $warning;
+          stroke: $warning;
+        }
+			}
+		}
+
+		&:hover {
+			> svg > path {
+				fill: $warning;
+				stroke: $warning;
+			}
+		}
+
+		&:active {
+			transform: scale(0.85);
+		}
+	}
+}

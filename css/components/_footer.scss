@@ -1,0 +1,143 @@
+@use "../abstracts" as *;
+
+/* -------------------------------------------------- */
+/* ---------- Footer du site ---------- */
+/* -------------------------------------------------- */
+
+footer {
+	background-color: $green;
+}
+
+.footer-content {
+	&-wrapper {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		padding-top: 2rem;
+		padding-bottom: 2rem;
+		color: $white;
+		list-style-type: none;
+		text-decoration: none;
+	}
+
+	&-logo {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		> img {
+			display: none;
+		}
+	}
+
+	&-sitemap {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+
+		&-title {
+			padding-bottom: 1rem;
+			color: $white;
+		}
+
+		&-list {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+
+			&-item {
+				color: $white;
+				list-style-type: none;
+				text-decoration: none;
+				padding-bottom: 0.2rem;
+				font-size: 1.4rem;
+			}
+		}
+	}
+
+	&-links {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+
+		&-title {
+			padding: 1.5rem 0 1rem;
+			color: $white;
+		}
+
+		&-text {
+			padding-bottom: 0.8rem;
+			font-size: 1.4rem;
+			color: $white;
+		}
+	}
+}
+
+.footer-legal {
+	background-color: $white;
+
+	&-list {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		padding-top: 2rem;
+		padding-bottom: 2rem;
+
+		&-item {
+			padding-top: 1rem;
+			padding-bottom: 1rem;
+			list-style-type: none;
+			text-decoration: none;
+			color: $dark-gray;
+			font-size: 1.4rem;
+		}
+	}
+}
+
+@include responsive("medium") {
+	.footer-content {
+		&-wrapper {
+			gap: 24rem;
+      flex-direction: row;
+      justify-content: start;
+			align-items: start;
+    }
+    
+		&-logo {
+			> img {
+				display: block;
+				width: 10rem;
+			}
+		}
+
+		&-sitemap {
+			justify-content: start;
+			align-items: start;
+
+			&-list {
+				align-items: start;
+			}
+		}
+
+		&-links {
+			align-items: start;
+			justify-content: start;
+
+			&-title {
+				padding: 0;
+			}
+		}
+	}
+
+	.footer-legal {
+		&-list {
+			flex-direction: row;
+			justify-content: space-around;
+		}
+	}
+}

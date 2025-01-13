@@ -1,0 +1,82 @@
+@use "../abstracts" as *;
+
+/* -------------------------------------------------- */
+/* ---------- Style des boutons ---------- */
+/* -------------------------------------------------- */
+
+.button {
+	padding: 1rem 3.5rem;
+	color: $white;
+	background-color: $green;
+	border-radius: 0.5rem;
+	border: 1px solid $green;
+	font-size: 1.6rem;
+	cursor: pointer;
+	transition: all 0.3s ease-in-out;
+
+	&-group {
+		display: flex;
+		gap: 2rem;
+		align-items: center;
+		justify-content: start;
+	}
+
+	&-primary {
+		@extend .button;
+		background-color: $green;
+		color: $white;
+
+		&:hover {
+			background-color: $white;
+			color: $green;
+		}
+	}
+}
+
+.link {
+	font-size: 1.6rem;
+	text-decoration: underline;
+	color: $dark-gray;
+}
+
+.loading-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+	width: 100%;
+	padding: 0.5rem 0;
+}
+
+.loading-spinner {
+	width: 4.8rem;
+	height: 4.8rem;
+	border-radius: 50%;
+	display: inline-block;
+	border-top: 0.4rem solid $green;
+	border-right: 0.4rem solid transparent;
+	box-sizing: border-box;
+	animation: rotation 1s linear infinite;
+}
+
+.loading-spinner::after {
+	content: "";
+	box-sizing: border-box;
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 4.8rem;
+	height: 4.8rem;
+	border-radius: 50%;
+	border-bottom: 4px solid $green;
+	border-left: 4px solid transparent;
+}
+
+@keyframes rotation {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}

@@ -1,0 +1,82 @@
+@use '../abstracts' as *;
+
+/* -------------------------------------------------- */
+/* ---------- Bandeau cookie ---------- */
+/* -------------------------------------------------- */
+
+.cookie-banner {
+  position: fixed;
+  bottom: 2rem;
+  left: 2rem;
+  background-color: $white;
+  border-radius: 1rem;
+  @include flex-col(1rem);
+  padding: 2rem;
+  max-width: 60%;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+  display: none;
+
+  &-title {
+    font-weight: $fsemibold;
+  }
+
+  &-content {
+    @include flex-col(0.5rem);
+
+    p {
+      font-size: 1.6rem;
+    }
+
+    span {
+      font-weight: $fsemibold;
+      font-size: 1.6rem;
+    }
+  }
+
+  &-button-group {
+    width: 100%;
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    gap: 2rem;
+
+    button {
+      padding: 1rem 3.5rem;
+      color: $dark-gray;
+      background-color: transparent;
+      border-radius: 0.5rem;
+      border: 1px solid $dark-gray;
+      font-size: 1.6rem;
+      cursor: pointer;
+      transition: all 0.3s ease-in-out;
+    }
+
+    > .refuse-cookie:hover {
+      background-color: $danger;
+      border-color: $danger;
+      color: $white;
+    }
+
+    > .accept-cookie:hover {
+      background-color: $green;
+      border-color: $green;
+      color: $white;
+    }
+  }
+}
+
+@include responsive("medium") {
+  .cookie-banner {
+    left: 5rem;
+    bottom: 5rem;
+    max-width: 40%;
+
+    &-button-group {
+      flex-direction: row;
+      align-items: center;
+      justify-content: end;
+    }
+  }
+}

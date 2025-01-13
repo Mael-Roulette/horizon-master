@@ -1,0 +1,50 @@
+@use './variables' as *;
+@use "sass:map";
+
+@mixin grid-col( $property ) {
+    display: grid;
+    grid-template-columns: repeat( $property, 1fr );
+}
+
+@mixin grid-col-auto( $property ) {
+    display: grid;
+    grid-template-columns: repeat( $property, auto );
+}
+
+@mixin grid-row( $property ) {
+    display: grid;
+    grid-template-rows: repeat( $property, 1fr );
+}
+
+@mixin grid-row-auto( $property ) {
+    display: grid;
+    grid-template-rows: repeat( $property, auto );
+}
+
+
+@mixin flex-row( $property ) {
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    justify-content: start;
+    gap: $property;
+}
+
+@mixin flex-col( $property ) {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    gap: $property;
+}
+
+
+@mixin responsive($breakpoint) {
+    @if map.has-key($breakpoints, $breakpoint) { // Utilisation explicite du namespace map
+        @media (min-width: map.get($breakpoints, $breakpoint)) { // Utilisation explicite du namespace map
+            @content;
+        }
+    } @else {
+        @error "Le breakpoint `#{$breakpoint}` n'existe pas dans la map `$breakpoints`.";
+    }
+}
